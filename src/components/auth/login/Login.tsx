@@ -1,11 +1,14 @@
 import React from 'react';
+import LoginRender from "./LoginRender.tsx";
 
-export interface LoginProps {
-    classes: any
-}
- 
-const Login: React.SFC<LoginProps> = ({classes}) => {
-    return ( <h1>From Login</h1> );
+
+const Login = () => {
+
+    const handleObSubmitEvent = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault();
+        console.log("sending", e)
+    }
+    return ( <LoginRender handleOnSubmit={handleObSubmitEvent} /> );
 }
  
 export { Login };
