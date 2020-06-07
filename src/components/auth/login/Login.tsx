@@ -1,14 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import LoginRender from "./LoginRender.tsx";
-
+//Importing types
+import { User } from "./DataTypes.ts";
 
 const Login = () => {
-
-    const handleObSubmitEvent = (e: React.MouseEvent<HTMLButtonElement>) => {
+    //Defining the state
+    const [user, setUser] = useState<User>({email:'', password:''});
+    
+    const handleOnSubmitEvent = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log("sending", e)
+        
+        //Validate no empty fields
+
+        //Pass the action to the reducer
+
     }
-    return ( <LoginRender handleOnSubmit={handleObSubmitEvent} /> );
+
+    const handleOnChange = (user : User) => {
+        console.log("user", user)
+    }
+    return ( <LoginRender 
+                onSubmitEvent={handleOnSubmitEvent} 
+                onChangeEvent={handleOnChange} 
+                user={user}
+                setUser={setUser}
+            /> 
+    );
 }
  
 export { Login };
