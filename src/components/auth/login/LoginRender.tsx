@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 //Importing types
-import { LoginRenderProps } from "./DataTypes.ts";
+import { LoginRenderProps } from "./DataTypes";
 // Importing the MUI Components
-import { Box, Grid, Typography, FormControl, TextField, Button } from '@material-ui/core';
+import { Grid, Typography, FormControl, TextField, Button } from '@material-ui/core';
 import { withStyles, Theme} from "@material-ui/core/styles";
 
 const LoginRender = ({classes, onSubmitEvent, onChangeEvent, setUser, user} : LoginRenderProps) => {
@@ -19,8 +19,8 @@ const LoginRender = ({classes, onSubmitEvent, onChangeEvent, setUser, user} : Lo
 
     return ( 
         <Grid container className={classes.root}>
-            <Grid item xs={6} className={classes.leftSide} />
-            <Grid item xs={6} className={classes.rightSide}>
+            <Grid item xs={undefined} sm={6} className={classes.leftSide} />
+            <Grid item xs={12} sm={6} className={classes.rightSide}>
                 <Grid 
                     container 
                     alignItems="center" 

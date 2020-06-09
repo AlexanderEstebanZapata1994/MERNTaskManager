@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import LoginRender from "./LoginRender.tsx";
+import LoginRender from "./LoginRender";
 //Importing types
-import { User } from "./DataTypes.ts";
+import { User, userInitialState } from "../../../types";
 
 const Login = () => {
     //Defining the state
-    const [user, setUser] = useState<User>({email:'', password:''});
+    const [user, setUser] = useState<User>(userInitialState);
     
     const handleOnSubmitEvent = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();

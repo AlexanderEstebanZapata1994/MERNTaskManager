@@ -1,8 +1,18 @@
 import React from 'react';
-import NewAccountRender from "./NewAccountRender.tsx";
+import NewAccountRender from "./NewAccountRender";
+
+import { User, userInitialState } from "../../../types";
  
 const NewAccount = () => {
-    return ( <NewAccountRender/> );
+
+    const [newUser, setNewUser] = React.useState<User>(userInitialState)
+    return ( 
+        <NewAccountRender
+            onChangeEvent={() => {}}
+            onSubmitEvent={() => {}}
+            user={newUser}
+            setUser={setNewUser}
+        /> );
 }
  
 export { NewAccount };

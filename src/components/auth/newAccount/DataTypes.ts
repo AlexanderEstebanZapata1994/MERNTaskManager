@@ -1,9 +1,9 @@
-import { User } from '../../../types/User.ts';
+import { User } from '../../../types';
 
-export interface NewAccountProps {
+export interface NewAccountRenderProps {
     classes: any,
-    onSubmitEvent: (e:React.FormEvent<HTMLFormElement>) => void
-    onChangeEvent: (user : User) => void
-    user: User
-    setUser: (user: User) => void
+    onSubmitEvent: (e:React.FormEvent<HTMLFormElement>) => void,
+    onChangeEvent: (user : User) => void,
+    user: User,
+    setUser: (user: User) => void,
 }
