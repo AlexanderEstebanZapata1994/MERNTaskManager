@@ -1,11 +1,8 @@
 import React from 'react';
-
-export interface ProjectsProps {
-    classes: any
-}
+import ProjectsRender from "./ProjectsRender";
  
-const Projects: React.SFC<ProjectsProps> = ({classes}) => {
-    return ( <h1>Desde Projects</h1> );
+const Projects  = () => {
+    return ( <ProjectsRender /> );
 }
  
 export { Projects };
