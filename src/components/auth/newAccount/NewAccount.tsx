@@ -1,11 +1,18 @@
 import React from 'react';
+import NewAccountRender from "./NewAccountRender";
 
-export interface NewAccountProps {
-    classes: any
-}
+import { User, userInitialState } from "../../../types";
  
-const NewAccount: React.SFC<NewAccountProps> = ({classes}) => {
-    return ( <h1>Desde NewAccount</h1> );
+const NewAccount = () => {
+
+    const [newUser, setNewUser] = React.useState<User>(userInitialState)
+    return ( 
+        <NewAccountRender
+            onChangeEvent={() => {}}
+            onSubmitEvent={() => {}}
+            user={newUser}
+            setUser={setNewUser}
+        /> );
 }
  
 export { NewAccount };
