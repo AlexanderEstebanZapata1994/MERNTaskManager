@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import { Login } from "../auth";
 import { NewAccount } from "../auth"
-import { Projects } from "../projects"
+import { Projects } from "../projectComponent"
 
 function App() {
   return (
