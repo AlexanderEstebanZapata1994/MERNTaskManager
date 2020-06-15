@@ -1,6 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
-import { Grid, Box } from '@material-ui/core';
+import { Grid, Box, Button } from '@material-ui/core';
 
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -20,6 +20,7 @@ import AddIcon from '@material-ui/icons/Add';
 
 import { NewProject } from "../../layout";
 import { ProjectList } from '../projectList';
+import { AppBarMenuAction } from "../../appBarMenuAction"
 
 export interface ProjectsRenderProps {
     
@@ -32,15 +33,17 @@ const ProjectsRender = ( props: ProjectsRenderProps) => {
     const classes = useStyles();
     const [open, setOpen] = React.useState<boolean>(true);
     const [showNewProject, setShowNewProject] = React.useState<boolean>(true)
-
+    const [showCreatedProjects, setShowCreatedProjects] = React.useState<boolean>(true)
 
     const handleDrawerOpen = () => {
         setOpen(true);
+        setShowCreatedProjects(true);
       };
     
       const handleDrawerClose = () => {
         setOpen(false);
-        setShowNewProject(false)
+        setShowNewProject(false);
+        setShowCreatedProjects(false);
       };
 
     return ( 
@@ -61,20 +64,27 @@ const ProjectsRender = ( props: ProjectsRenderProps) => {
                         >
                             <MenuIcon />
                         </IconButton>
-                        <Typography variant="h6" noWrap>
-                            MERN Task Manager
+                        <Typography variant="h6" noWrap align="left">
+                            Welcome Alexander!
                         </Typography>
+                        <Box className={classes.appBarMenuOptions}>
+                          <AppBarMenuAction  />
+                        </Box>
                     </Toolbar>
                 </AppBar>
                 <Drawer
+                
                     variant="permanent"
                     className={clsx(classes.drawer, {[classes.drawerOpen]: open, [classes.drawerClose]: !open,})}
                     classes={{paper: clsx({[classes.drawerOpen]: open, [classes.drawerClose]: !open,}),}}
                 >
                     <Box className={classes.toolbar}>
-                        <IconButton onClick={handleDrawerClose}>
-                           <ChevronLeftIcon />
-                        </IconButton>
+                      <Typography variant="h6" noWrap align="left">
+                        Task Manager
+                      </Typography>
+                      <IconButton onClick={handleDrawerClose}>
+                        <ChevronLeftIcon />
+                      </IconButton>
                     </Box>
                     <Divider />
                     <List>
@@ -83,12 +93,12 @@ const ProjectsRender = ( props: ProjectsRenderProps) => {
                             <ListItemText primary="New project" />
                         </ListItem>
                         <NewProject visible={showNewProject} />
+                        <ProjectList visible={showCreatedProjects} />
                     </List>
                     <Divider />
                 </Drawer>
                 <Box component="main" className={classes.content}>
                     <Box className={classes.toolbar} />
-                    <ProjectList />
                 </Box>
             </Box>
         </Grid>
@@ -156,6 +166,10 @@ const useStyles = makeStyles((theme: Theme) =>
       flexGrow: 1,
       padding: theme.spacing(3),
       maxWidth: "500px"
+    },
+    appBarMenuOptions: {
+      position: "absolute",
+      right: theme.spacing(1)
     },
   }),
 );

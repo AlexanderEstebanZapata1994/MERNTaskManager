@@ -1,7 +1,7 @@
 import React from 'react';
 import { ProjectItemRender } from "../projectItem";
 import { Project } from "../DataTypes";
-import { withStyles, Theme, List } from '@material-ui/core';
+import { withStyles, Theme, List, Typography } from '@material-ui/core';
 
 interface ProjectListRenderProps {
     projects: Project[],
@@ -10,16 +10,22 @@ interface ProjectListRenderProps {
  
 const ProjectListRender = ({projects, classes} : ProjectListRenderProps) => {
     return ( 
-        <List className={classes.roots}>
-            {projects.map((project : Project) =>  <ProjectItemRender project={project} />)}
-        </List>
+        <>
+            <Typography variant="h5" align="center" className={classes.title}>Your Projects</Typography>
+            <List className={classes.roots}>
+                {projects.map((project : Project) =>  <ProjectItemRender project={project} />)}
+            </List>
+        </>
     )
 }
  
 const styles = (theme : Theme) => ({
     roots: {
         overflowY : "auto" as "auto",
-        maxHeight: '500px',
+        maxHeight: '250px',
+    },
+    title: {
+        paddingTop: (theme.spacing(1) + 2)
     }
 })
 export default withStyles (styles) (ProjectListRender);
