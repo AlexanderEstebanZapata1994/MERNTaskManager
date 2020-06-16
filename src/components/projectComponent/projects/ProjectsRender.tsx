@@ -1,6 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
-import { Grid, Box, Button } from '@material-ui/core';
+import { Grid, Box } from '@material-ui/core';
 
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -21,6 +21,7 @@ import AddIcon from '@material-ui/icons/Add';
 import { NewProject } from "../../layout";
 import { ProjectList } from '../projectList';
 import { AppBarMenuAction } from "../../appBarMenuAction"
+import { FormTask } from 'src/components/tasks';
 
 export interface ProjectsRenderProps {
     
@@ -99,6 +100,7 @@ const ProjectsRender = ( props: ProjectsRenderProps) => {
                 </Drawer>
                 <Box component="main" className={classes.content}>
                     <Box className={classes.toolbar} />
+                    <FormTask />
                 </Box>
             </Box>
         </Grid>
@@ -109,6 +111,7 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       display: 'flex',
+      width: '100%'
     },
     appBar: {
       zIndex: theme.zIndex.drawer + 1,
@@ -164,8 +167,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     content: {
       flexGrow: 1,
-      padding: theme.spacing(3),
-      maxWidth: "500px"
+      padding: theme.spacing(3)
     },
     appBarMenuOptions: {
       position: "absolute",
