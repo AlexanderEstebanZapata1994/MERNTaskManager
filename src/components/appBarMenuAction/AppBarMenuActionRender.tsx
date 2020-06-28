@@ -6,19 +6,20 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { Box, withStyles } from '@material-ui/core';
 
 interface AppBarMenuActionRenderProps {
-    classes?: any
+    classes?: any,
+    OnClickLogoutEvent: (e :React.MouseEvent<HTMLElement>) => void
 }
 
 type optionType = {
     label: string,
-    action: () => void
+    action: (e :React.MouseEvent<HTMLElement>) => void
 }
  
-const AppBarMenuActionRender = ({classes}: AppBarMenuActionRenderProps) => {
+const AppBarMenuActionRender = ({classes, OnClickLogoutEvent}: AppBarMenuActionRenderProps) => {
     
-    const handleLogoutEvent = () => {
-        alert("logout option pressed")
+    const handleLogoutEvent = (e :React.MouseEvent<HTMLElement>) => {
         handleClose();
+        OnClickLogoutEvent(e);
     }
     const options : optionType[] = [
         {label: "Logout", action: handleLogoutEvent}
