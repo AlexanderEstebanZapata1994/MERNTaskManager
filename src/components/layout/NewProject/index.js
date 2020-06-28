@@ -1,1 +1,1 @@
-export * from './NewProject.tsx'
+export * from './NewProject'
