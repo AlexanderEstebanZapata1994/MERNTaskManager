@@ -1,5 +1,5 @@
-import * as React from 'react';
-import NewProjectRender from "./NewProjectRender"
+import React from 'react';
+import NewProjectRender from "./NewProjectRender";
 import { Project } from "./DataTypes";
 export interface NewProjectProps {
     visible: boolean
