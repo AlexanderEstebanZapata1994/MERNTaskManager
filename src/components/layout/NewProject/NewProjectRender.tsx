@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Button, FormControl, TextField, Grid, withStyles, Theme, FormHelperText } from '@material-ui/core';
 
-export interface NewProjectRenderProps {
+interface NewProjectRenderProps {
     classes?: any,
     visible: boolean,
     projectName: string,
