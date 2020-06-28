@@ -58,7 +58,7 @@ const styles = (theme: Theme) => ({
         flexGrow: 1
     },
     button:{
-        marginBottom: '10px',
+        marginBottom: '5vh',
         color: theme.palette.secondary.dark
     }
 });
