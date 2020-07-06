@@ -26,19 +26,18 @@ import { FormTask } from 'src/components/tasks';
 const ProjectsRender = ( props: ProjectsRenderProps) => {
     const classes = useStyles();
     
-    const [open, setOpen] = React.useState<boolean>(true);
+    const [ open, setOpen ] = React.useState<boolean>(true);
+    const [ showCreatedProjects, setShowCreatedProjects ] = React.useState<boolean>(true)
     const { newProjectFormIsOpen, setNewProjectFormIsOpen } = props;
-    const [showCreatedProjects, setShowCreatedProjects] = React.useState<boolean>(true)
-
+    
     const handleDrawerOpen = () => {
         setOpen(true);
-        setNewProjectFormIsOpen();
         setShowCreatedProjects(true);
     };
     
     const handleDrawerClose = () => {
         setOpen(false);
-        setNewProjectFormIsOpen();
+        setNewProjectFormIsOpen(false);
         setShowCreatedProjects(false);
     };
 
@@ -84,7 +83,7 @@ const ProjectsRender = ( props: ProjectsRenderProps) => {
                     </Box>
                     <Divider />
                     <List>
-                        <ListItem button key={'new-project'} onClick={() => {setOpen(true); setNewProjectFormIsOpen()}}>
+                        <ListItem button key={'new-project'} onClick={() => {setOpen(true); setNewProjectFormIsOpen(!newProjectFormIsOpen)}}>
                             <ListItemIcon  ><AddIcon /></ListItemIcon>
                             <ListItemText primary="New project" />
                         </ListItem>
@@ -173,7 +172,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 interface ProjectsRenderProps {
   newProjectFormIsOpen: boolean,
-  setNewProjectFormIsOpen: VoidFunction
+  setNewProjectFormIsOpen(showCreatedProjects:boolean): void
 }
 
 

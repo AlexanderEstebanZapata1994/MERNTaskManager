@@ -10,9 +10,10 @@ const ProjectState = (props: any) => {
     const [state, dispatch] = React.useReducer(projectReducer, initialState);
     
     // Defining some actions
-    const showFormNewProject = () => {
+    const showFormNewProject = (showNewProjectForm: boolean) => {
         dispatch({
-            type: NEW_PROJECT_FORM
+            type: NEW_PROJECT_FORM,
+            payload: showNewProjectForm
         })
     }
 

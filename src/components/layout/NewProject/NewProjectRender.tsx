@@ -5,11 +5,12 @@ interface NewProjectRenderProps {
     classes?: any,
     visible: boolean,
     projectName: string,
+    error: boolean,
     onChangeEvent: (e: React.ChangeEvent<HTMLInputElement>)=> void
     onSubmitEvent: (e: React.MouseEvent<HTMLButtonElement>)=> void
 }
  
-const NewProjectRender = ({visible, projectName, onChangeEvent, onSubmitEvent, classes} : NewProjectRenderProps) => {
+const NewProjectRender = ({visible, projectName, error, onChangeEvent, onSubmitEvent, classes} : NewProjectRenderProps) => {
 
     if (!visible){
         return null;
@@ -24,7 +25,7 @@ const NewProjectRender = ({visible, projectName, onChangeEvent, onSubmitEvent, c
                     spacing={2}
                 >
                     <Grid item xs={12}>
-                        <FormControl error>
+                        <FormControl error={error}>
                             <TextField
                                 required
                                 type="text"
@@ -34,7 +35,7 @@ const NewProjectRender = ({visible, projectName, onChangeEvent, onSubmitEvent, c
                                 value={projectName}
                                 onChange={onChangeEvent}
                             />
-                            <FormHelperText>Project name is required</FormHelperText>
+                            {error && <FormHelperText>Project name is required</FormHelperText>}
                         
                         </FormControl>
                         
@@ -44,6 +45,7 @@ const NewProjectRender = ({visible, projectName, onChangeEvent, onSubmitEvent, c
                         color="default"
                         className={classes.button} 
                         onClick={onSubmitEvent} 
+                        disabled={error}
                     >
                         Add project
                     </Button>
@@ -59,7 +61,7 @@ const styles = (theme: Theme) => ({
     },
     button:{
         marginBottom: '5vh',
-        color: theme.palette.secondary.dark
+        color: theme.palette.secondary.dark,
     }
 });
 

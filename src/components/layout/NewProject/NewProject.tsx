@@ -12,21 +12,28 @@ const NewProject = ({visible} : NewProjectProps) => {
         id: Math.round(Math.random() * 10),
         name: ''
     })
+    const [error, setError] = React.useState<boolean>(false)
 
     const { addNewProject } = React.useContext(projectContext)
 
     const handleOnChangeProject = (e : React.ChangeEvent<HTMLInputElement>) => {
-            setProject({...project, [e.target.name]: e.target.value});
-            
+            setProject({...project, [e.target.name]: e.target.value});           
     }
+
+    //Component did update
+    React.useEffect(()=>{
+        //Validate the state
+        setError(project.name.length === 0)
+    }, [project])
+
+    //Component did mount
+    React.useEffect(() => {
+        setError(false)
+    }, [])    
 
     const handleOnSubmitNewProject = (e : React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
         addNewProject(project);
-
-        //Validate the state
-
-        //Add to the state
 
         //Restar the form 
         setProject({id: Math.round(Math.random() * 10), name: '' })
@@ -38,6 +45,7 @@ const NewProject = ({visible} : NewProjectProps) => {
         <NewProjectRender 
             projectName={name} 
             visible={visible} 
+            error={error}
             onChangeEvent={handleOnChangeProject} 
             onSubmitEvent={handleOnSubmitNewProject}
         /> );

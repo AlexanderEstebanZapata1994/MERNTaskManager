@@ -8,7 +8,7 @@ export default (state : ProjectInterface, action : CommonActionType ) => {
         case NEW_PROJECT_FORM:
             return {
                 ...state, 
-                newProjectForm: !state.newProjectForm
+                newProjectForm: action.payload
             }
         case ADD_NEW_PROJECT:
             return {

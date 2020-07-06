@@ -6,7 +6,7 @@ export type Project = {
 export interface ProjectInterface {
     newProjectForm: boolean,
     projects : Project[],
-    showFormNewProject(): void,
+    showFormNewProject(showCreatedProjects:boolean): void,
     addNewProject(project:Project): void,
 }
 
