@@ -1,3 +1,4 @@
 export type CommonActionType = {
-    type: string
+    type: string,
+    payload?: any
 }

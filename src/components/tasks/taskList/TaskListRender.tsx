@@ -1,7 +1,7 @@
 import React from 'react';
 import { Task } from '../task/Task';
 import { TaskType } from "../DataTypes";
-import { List, Typography, Fab, makeStyles, createStyles, Theme, Backdrop, Button } from '@material-ui/core';
+import { List, Typography, makeStyles, createStyles, Theme } from '@material-ui/core';
 import { SpeedDial, SpeedDialAction, SpeedDialIcon } from "@material-ui/lab";
 import AddIcon from '@material-ui/icons/Add';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -13,23 +13,18 @@ export interface TaskListRenderProps {
 const TaskListRender = ({Tasks }: TaskListRenderProps) => {
     const classes = useStyles();
     const [open, setOpen] = React.useState<boolean>(false);
-    const [hidden, setHidden] = React.useState<boolean>(false);
     const actions = [
     { icon: <DeleteIcon />, name: 'Delete Project' },
     { icon: <AddIcon />, name: 'Add Task' }
     ];
 
-    const handleVisibility = () => {
-        setHidden((prevHidden) => !prevHidden);
-      };
+    const handleOpen = () => {
+    setOpen(true);
+    };
     
-      const handleOpen = () => {
-        setOpen(true);
-      };
-    
-      const handleClose = () => {
-        setOpen(false);
-      };
+    const handleClose = () => {
+    setOpen(false);
+    };
 
 
     return ( 
@@ -45,7 +40,6 @@ const TaskListRender = ({Tasks }: TaskListRenderProps) => {
             <SpeedDial
                 ariaLabel="SpeedDial tooltip example"
                 className={classes.fabButton}
-                hidden={hidden}
                 icon={<SpeedDialIcon />}
                 onClose={handleClose}
                 onOpen={handleOpen}
