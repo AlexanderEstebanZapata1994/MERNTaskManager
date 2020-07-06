@@ -1,7 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
-import { Grid, Box } from '@material-ui/core';
 
+import { Grid, Box } from '@material-ui/core';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
@@ -23,27 +23,22 @@ import { ProjectList } from '../projectList';
 import { AppBarMenuAction } from "../../appBarMenuAction"
 import { FormTask } from 'src/components/tasks';
 
-export interface ProjectsRenderProps {
-    
-}
-
-
-const drawerWidth = 260;
- 
 const ProjectsRender = ( props: ProjectsRenderProps) => {
     const classes = useStyles();
+    
+    const { newProjectFormIsOpen, setNewProjectFormIsOpen } = props;
     const [open, setOpen] = React.useState<boolean>(true);
-    const [showNewProject, setShowNewProject] = React.useState<boolean>(true)
     const [showCreatedProjects, setShowCreatedProjects] = React.useState<boolean>(true)
 
     const handleDrawerOpen = () => {
         setOpen(true);
+        setNewProjectFormIsOpen();
         setShowCreatedProjects(true);
       };
     
       const handleDrawerClose = () => {
         setOpen(false);
-        setShowNewProject(false);
+        setNewProjectFormIsOpen();
         setShowCreatedProjects(false);
       };
 
@@ -89,11 +84,11 @@ const ProjectsRender = ( props: ProjectsRenderProps) => {
                     </Box>
                     <Divider />
                     <List>
-                        <ListItem button key={'new-project'} onClick={() => {setOpen(true); setShowNewProject(!showNewProject)}}>
+                        <ListItem button key={'new-project'} onClick={() => {setOpen(true); setNewProjectFormIsOpen()}}>
                             <ListItemIcon  ><AddIcon /></ListItemIcon>
                             <ListItemText primary="New project" />
                         </ListItem>
-                        <NewProject visible={showNewProject} />
+                        <NewProject visible={newProjectFormIsOpen} />
                         <ProjectList visible={showCreatedProjects} />
                     </List>
                     <Divider />
@@ -121,8 +116,8 @@ const useStyles = makeStyles((theme: Theme) =>
       }),
     },
     appBarShift: {
-      marginLeft: drawerWidth,
-      width: `calc(100% - ${drawerWidth}px)`,
+      marginLeft: 260,
+      width: `calc(100% - 260px)`,
       transition: theme.transitions.create(['width', 'margin'], {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.enteringScreen,
@@ -135,12 +130,12 @@ const useStyles = makeStyles((theme: Theme) =>
       display: 'none',
     },
     drawer: {
-      width: drawerWidth,
+      width: 260,
       flexShrink: 0,
       whiteSpace: 'nowrap',
     },
     drawerOpen: {
-      width: drawerWidth,
+      width: 260,
       transition: theme.transitions.create('width', {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.enteringScreen,
@@ -175,5 +170,11 @@ const useStyles = makeStyles((theme: Theme) =>
     },
   }),
 );
+
+interface ProjectsRenderProps {
+  newProjectFormIsOpen: boolean,
+  setNewProjectFormIsOpen: VoidFunction
+}
+
 
 export default ProjectsRender;
