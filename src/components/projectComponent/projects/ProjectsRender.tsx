@@ -26,21 +26,21 @@ import { FormTask } from 'src/components/tasks';
 const ProjectsRender = ( props: ProjectsRenderProps) => {
     const classes = useStyles();
     
-    const { newProjectFormIsOpen, setNewProjectFormIsOpen } = props;
     const [open, setOpen] = React.useState<boolean>(true);
+    const { newProjectFormIsOpen, setNewProjectFormIsOpen } = props;
     const [showCreatedProjects, setShowCreatedProjects] = React.useState<boolean>(true)
 
     const handleDrawerOpen = () => {
         setOpen(true);
         setNewProjectFormIsOpen();
         setShowCreatedProjects(true);
-      };
+    };
     
-      const handleDrawerClose = () => {
+    const handleDrawerClose = () => {
         setOpen(false);
         setNewProjectFormIsOpen();
         setShowCreatedProjects(false);
-      };
+    };
 
     return ( 
         <Grid container >

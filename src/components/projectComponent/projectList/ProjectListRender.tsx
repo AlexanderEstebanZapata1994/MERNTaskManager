@@ -1,6 +1,6 @@
 import React from 'react';
 import { ProjectItemRender } from "../projectItem";
-import { Project } from "../DataTypes";
+import { Project } from "../../../types/projectTypes/projectTypes";
 import { withStyles, Theme, List, Typography } from '@material-ui/core';
 
 interface ProjectListRenderProps {
@@ -13,7 +13,7 @@ const ProjectListRender = ({projects, classes} : ProjectListRenderProps) => {
         <>
             <Typography variant="h5" align="center" className={classes.title}>Your Projects</Typography>
             <List className={classes.roots}>
-                {projects.map((project : Project) =>  <ProjectItemRender project={project} />)}
+                {projects.map((project : Project) =>  <ProjectItemRender key={project.id} project={project} />)}
             </List>
         </>
     )

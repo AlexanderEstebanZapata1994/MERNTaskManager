@@ -1,6 +1,7 @@
 import React from 'react';
 import NewProjectRender from "./NewProjectRender";
-import { Project } from "./DataTypes";
+import { Project } from "../../../types/projectTypes/projectTypes";
+import projectContext from 'src/context/projects/projectContext';
 export interface NewProjectProps {
     visible: boolean
 }
@@ -8,31 +9,34 @@ export interface NewProjectProps {
 const NewProject = ({visible} : NewProjectProps) => {
     //State for saving the project
     const [project, setProject] = React.useState<Project>({
-        projectName: ''
+        id: Math.round(Math.random() * 10),
+        name: ''
     })
+
+    const { addNewProject } = React.useContext(projectContext)
 
     const handleOnChangeProject = (e : React.ChangeEvent<HTMLInputElement>) => {
             setProject({...project, [e.target.name]: e.target.value});
-            console.log("New project")
-            console.log(e.target.value);
+            
     }
 
     const handleOnSubmitNewProject = (e : React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
-        console.log('it is working')
+        addNewProject(project);
 
         //Validate the state
 
         //Add to the state
 
         //Restar the form 
+        setProject({id: Math.round(Math.random() * 10), name: '' })
 }
 
     //We extract the project name of the state
-    const { projectName } = project;
+    const { name } = project;
     return ( 
         <NewProjectRender 
-            projectName={projectName} 
+            projectName={name} 
             visible={visible} 
             onChangeEvent={handleOnChangeProject} 
             onSubmitEvent={handleOnSubmitNewProject}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Project } from "../DataTypes";
+import { Project } from "../../../types/projectTypes/projectTypes";
 import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import FileCopyIcon from "@material-ui/icons/FileCopyOutlined";
 

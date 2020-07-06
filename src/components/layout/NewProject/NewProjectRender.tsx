@@ -28,7 +28,7 @@ const NewProjectRender = ({visible, projectName, onChangeEvent, onSubmitEvent, c
                             <TextField
                                 required
                                 type="text"
-                                name="projectName"
+                                name="name"
                                 placeholder="Type your project name"
                                 label="Project name"
                                 value={projectName}
@@ -41,9 +41,9 @@ const NewProjectRender = ({visible, projectName, onChangeEvent, onSubmitEvent, c
                     </Grid>
                     <Button 
                         variant="outlined" 
-                        color="secondary"
+                        color="default"
                         className={classes.button} 
-                        onSubmit={onSubmitEvent} 
+                        onClick={onSubmitEvent} 
                     >
                         Add project
                     </Button>
