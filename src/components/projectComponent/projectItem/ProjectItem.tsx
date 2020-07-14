@@ -4,13 +4,13 @@ import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import FileCopyIcon from "@material-ui/icons/FileCopyOutlined";
 import withStyles from "@material-ui/core/styles/withStyles";
 
-export interface ProjectItemRenderProps {
+export interface ProjectItemProps {
    project : Project,
    setCurrentProject(project:Project): void,
    classes?: any
 }
  
-const ProjectItemRender = ( {project, setCurrentProject, classes}:ProjectItemRenderProps) => {
+const ProjectItem = ( {project, setCurrentProject, classes}:ProjectItemProps) => {
 
     return ( 
         <ListItem button key={project.id} className={classes.cursor} onClick={() => setCurrentProject(project)} >
@@ -25,4 +25,4 @@ const styles = () => ({
     }
 })
  
-export default withStyles(styles)(ProjectItemRender);
+export default withStyles(styles)(ProjectItem);

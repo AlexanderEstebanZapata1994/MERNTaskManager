@@ -1,1 +1,1 @@
-export {default} from "./ProjectItemRender"
+export {default} from "./ProjectItem"

@@ -19,7 +19,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import AddIcon from '@material-ui/icons/Add';
 
 import { NewProject } from "../../layout";
-import { ProjectList } from '../projectList';
+import ProjectList from '../projectList';
 import AppBarMenuAction from "../../appBarMenuAction"
 import { FormTask } from 'src/components/tasks';
 
