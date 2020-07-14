@@ -1,1 +1,1 @@
-export * from './AppBarMenuAction'
+export {default} from './AppBarMenuAction'

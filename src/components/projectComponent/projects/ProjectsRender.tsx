@@ -20,7 +20,7 @@ import AddIcon from '@material-ui/icons/Add';
 
 import { NewProject } from "../../layout";
 import { ProjectList } from '../projectList';
-import { AppBarMenuAction } from "../../appBarMenuAction"
+import AppBarMenuAction from "../../appBarMenuAction"
 import { FormTask } from 'src/components/tasks';
 
 const ProjectsRender = ( props: ProjectsRenderProps) => {
