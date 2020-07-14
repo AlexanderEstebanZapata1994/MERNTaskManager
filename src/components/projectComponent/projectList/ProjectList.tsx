@@ -9,13 +9,20 @@ interface ProjectListProps {
  
 const ProjectList = ({ visible } : ProjectListProps) => {
     
-    const {projects} = React.useContext(projectContext);
+    const {projects, getProjects, setCurrentProject} = React.useContext(projectContext);
+
+    React.useEffect(() => {
+        getProjects();
+    }, [])
     return ( 
         <>
             {visible ? 
             <>
                 <Divider  />
-                <ProjectListRender projects={projects}/>
+                <ProjectListRender 
+                    projects={projects}
+                    setCurrentProject={setCurrentProject}
+                />
             </>
             : null
             }

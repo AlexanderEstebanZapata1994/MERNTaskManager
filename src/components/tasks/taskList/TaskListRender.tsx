@@ -7,10 +7,11 @@ import AddIcon from '@material-ui/icons/Add';
 import DeleteIcon from '@material-ui/icons/Delete';
 
 export interface TaskListRenderProps {
+    projectTitle: string, 
     Tasks : TaskType[]
 }
  
-const TaskListRender = ({Tasks }: TaskListRenderProps) => {
+const TaskListRender = ({projectTitle, Tasks }: TaskListRenderProps) => {
     const classes = useStyles();
     const [open, setOpen] = React.useState<boolean>(false);
     const actions = [
@@ -29,7 +30,7 @@ const TaskListRender = ({Tasks }: TaskListRenderProps) => {
 
     return ( 
         <>
-            <Typography variant="h4" align="center">Project 1</Typography>
+            <Typography variant="h4" align="center">{projectTitle}</Typography>
             {Tasks.length !== 0 
             ?
                 <List>

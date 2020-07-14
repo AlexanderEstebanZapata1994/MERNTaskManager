@@ -6,18 +6,19 @@ export type Project = {
 export interface ProjectInterface {
     newProjectForm: boolean,
     projects : Project[],
+    selectedProject: Project,
     showFormNewProject(showCreatedProjects:boolean): void,
+    getProjects(): void,
     addNewProject(project:Project): void,
+    setCurrentProject(project:Project): void,
 }
 
 export const initialState : ProjectInterface = {
     newProjectForm: false,
-    projects:  [
-        {id: 1, name: "Project1"},
-        {id: 2, name: "Project2"},
-        {id: 3, name: "Project2"},
-        {id: 4, name: "Project8888"}
-    ],
+    projects: [],
+    selectedProject: {id: -1, name:''},
     showFormNewProject: () => null,
-    addNewProject: () => null
+    getProjects: () => null,
+    addNewProject: () => null,
+    setCurrentProject: () => null
 }

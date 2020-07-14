@@ -101,7 +101,7 @@ const ProjectsRender = ( props: ProjectsRenderProps) => {
     );
 }
  
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles((theme: Theme, widthDrawer: number = 350) =>
   createStyles({
     root: {
       display: 'flex',
@@ -115,8 +115,8 @@ const useStyles = makeStyles((theme: Theme) =>
       }),
     },
     appBarShift: {
-      marginLeft: 260,
-      width: `calc(100% - 260px)`,
+      marginLeft: widthDrawer,
+      width: `calc(100% - ${widthDrawer}px)`,
       transition: theme.transitions.create(['width', 'margin'], {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.enteringScreen,
@@ -129,12 +129,12 @@ const useStyles = makeStyles((theme: Theme) =>
       display: 'none',
     },
     drawer: {
-      width: 260,
+      width: widthDrawer,
       flexShrink: 0,
       whiteSpace: 'nowrap',
     },
     drawerOpen: {
-      width: 260,
+      width: widthDrawer,
       transition: theme.transitions.create('width', {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.enteringScreen,
