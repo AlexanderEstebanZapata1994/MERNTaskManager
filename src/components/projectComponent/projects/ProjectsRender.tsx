@@ -18,10 +18,10 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import AddIcon from '@material-ui/icons/Add';
 
-import { NewProject } from "../../layout";
+import NewProjectForm from "../../layout";
 import ProjectList from '../projectList';
 import AppBarMenuAction from "../../appBarMenuAction"
-import { FormTask } from 'src/components/tasks';
+import FormTask from 'src/components/tasks';
 
 const ProjectsRender = ( props: ProjectsRenderProps) => {
     const classes = useStyles();
@@ -87,7 +87,7 @@ const ProjectsRender = ( props: ProjectsRenderProps) => {
                             <ListItemIcon  ><AddIcon /></ListItemIcon>
                             <ListItemText primary="New project" />
                         </ListItem>
-                        <NewProject visible={newProjectFormIsOpen} />
+                        <NewProjectForm visible={newProjectFormIsOpen} />
                         <ProjectList visible={showCreatedProjects} />
                     </List>
                     <Divider />

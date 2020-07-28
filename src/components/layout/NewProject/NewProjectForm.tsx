@@ -1,20 +1,49 @@
 import React from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import { Box, Button, FormControl, TextField, Grid, withStyles, Theme, FormHelperText } from '@material-ui/core';
-
-interface NewProjectRenderProps {
-    classes?: any,
+import { Project } from "../../../types/projectTypes/projectTypes";
+import projectContext from 'src/context/projects/projectContext';
+export interface NewProjectProps {
     visible: boolean,
-    projectName: string,
-    error: boolean,
-    onChangeEvent: (e: React.ChangeEvent<HTMLInputElement>)=> void
-    onSubmitEvent: (e: React.MouseEvent<HTMLButtonElement>)=> void
+    classes: any
 }
  
-const NewProjectRender = ({visible, projectName, error, onChangeEvent, onSubmitEvent, classes} : NewProjectRenderProps) => {
+const NewProjectForm = ({visible, classes} : NewProjectProps) => {
+    //State for saving the project
+    const [project, setProject] = React.useState<Project>({
+        id: uuidv4(),
+        name: '',
+        tasks: []
+    })
+    const [error, setError] = React.useState<boolean>(false)
 
+    const { addNewProject } = React.useContext(projectContext)
+
+    const handleOnChangeProject = (e : React.ChangeEvent<HTMLInputElement>) => {
+            setProject({...project, [e.target.name]: e.target.value});           
+    }
+
+    React.useEffect(()=>{
+        setError(project.name.length === 0)
+    }, [project])
+
+
+    React.useEffect(() => {
+        setError(false)
+    }, [])    
+
+    const handleOnSubmitNewProject = (e : React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault();
+        addNewProject(project);
+
+        setProject({id: uuidv4(), name: '', tasks: []})
+    }
+
+    const { name } = project;
     if (!visible){
-        return null;
-    }else {    
+        return null
+    }
+    else {
         return ( 
             <Box className={classes.root}>
                 <Grid   
@@ -32,8 +61,8 @@ const NewProjectRender = ({visible, projectName, error, onChangeEvent, onSubmitE
                                 name="name"
                                 placeholder="Type your project name"
                                 label="Project name"
-                                value={projectName}
-                                onChange={onChangeEvent}
+                                value={name}
+                                onChange={handleOnChangeProject}
                             />
                             {error && <FormHelperText>Project name is required</FormHelperText>}
                         
@@ -44,7 +73,7 @@ const NewProjectRender = ({visible, projectName, error, onChangeEvent, onSubmitE
                         variant="outlined" 
                         color="default"
                         className={classes.button} 
-                        onClick={onSubmitEvent} 
+                        onClick={handleOnSubmitNewProject} 
                         disabled={error}
                     >
                         Add project
@@ -54,6 +83,7 @@ const NewProjectRender = ({visible, projectName, error, onChangeEvent, onSubmitE
         );
     }
 }
+ 
 
 const styles = (theme: Theme) => ({
     root:{
@@ -65,5 +95,4 @@ const styles = (theme: Theme) => ({
     }
 });
 
- 
-export default withStyles (styles) (NewProjectRender);
+export default withStyles(styles)(NewProjectForm);

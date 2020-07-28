@@ -1,1 +1,1 @@
-export * from './NewProject'
+export {default} from './NewProjectForm'

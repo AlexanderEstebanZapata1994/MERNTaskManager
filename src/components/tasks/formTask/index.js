@@ -1,1 +1,1 @@
-export * from  "./FormTask"
+export {default} from  "./FormTask"

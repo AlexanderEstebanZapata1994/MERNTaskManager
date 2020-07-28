@@ -1,19 +1,22 @@
 import * as React from 'react';
-import { TaskType } from "../DataTypes";
 import TaskListRender from './TaskListRender';
 import projectContext from 'src/context/projects/projectContext';
+import { Typography } from '@material-ui/core';
 
  
 const TaskList  = () => {
 
     const context = React.useContext(projectContext);
     const {selectedProject} = context;
-    const Tasks : TaskType[] = [
-        {id:1, name:"Tarea 1"},
-        {id:2, name:"Tarea 2"},
-        {id:3, name:"Tarea 3"},
-    ]
-    return ( <TaskListRender projectTitle={selectedProject.name} Tasks={Tasks}  /> );
+    return ( 
+        <>
+            { 
+                selectedProject 
+                ? <TaskListRender project={selectedProject} /> 
+                : <Typography variant="h6" align="center" noWrap>You have not selected any project</Typography>
+            }
+        </>
+    );
 }
  
 export default TaskList;

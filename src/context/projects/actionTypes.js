@@ -2,3 +2,4 @@ export const NEW_PROJECT_FORM = 'NEW_PROJECT_FORM';
 export const GET_PROJECTS = 'GET_PROJECTS';
 export const ADD_NEW_PROJECT = 'ADD_NEW_PROJECT';
 export const CURRENT_PROJECT = 'CURRENT_PROJECT';
+export const ADD_NEW_TASK = 'ADD_NEW_TASK';

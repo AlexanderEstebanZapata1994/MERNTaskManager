@@ -1,21 +1,23 @@
 import React from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import projectContext from "./projectContext";
 import projectReducer from "./projectReducer";
-import { initialState, Project } from "../../types/projectTypes/projectTypes";
+import { initialState, Project, Task } from "../../types/projectTypes/projectTypes";
 import { 
     NEW_PROJECT_FORM, 
     GET_PROJECTS,
     ADD_NEW_PROJECT, 
-    CURRENT_PROJECT 
+    CURRENT_PROJECT, 
+    ADD_NEW_TASK
 } from "./actionTypes";
 
 
 const ProjectState = (props: any) => {
-    const projects = [
-        {id: 1, name: "Project1"},
-        {id: 2, name: "Project2"},
-        {id: 3, name: "Project3"},
-        {id: 4, name: "Project4"}
+    const projects : Project[] = [
+        {id: uuidv4(), name: "Project1", tasks:[]},
+        {id: uuidv4(), name: "Project2", tasks:[]},
+        {id: uuidv4(), name: "Project3", tasks:[]},
+        {id: uuidv4(), name: "Project4", tasks:[]}
     ];
 
     // Dispatch to execute the actions
@@ -52,6 +54,13 @@ const ProjectState = (props: any) => {
         })
     }
 
+    const addNewTaskToProject = (task: Task) => {
+        dispatch({
+            type: ADD_NEW_TASK,
+            payload: task
+        })
+    }
+
     return (
         <projectContext.Provider
             value={{
@@ -61,6 +70,7 @@ const ProjectState = (props: any) => {
                 showFormNewProject,
                 getProjects,
                 addNewProject,
+                addNewTaskToProject,
                 setCurrentProject,
             }}
         >

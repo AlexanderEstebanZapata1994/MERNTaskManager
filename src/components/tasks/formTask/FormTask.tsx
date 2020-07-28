@@ -1,12 +1,12 @@
 import React from 'react';
-import FormTaskRender from './FormTaskRender';
+import TaskList from '../taskList/TaskList';
 
 export interface FormTaskProps {
-    
+    classes?: any
 }
  
-const FormTask = () => {
-    return ( <FormTaskRender /> );
+const FormTask = ({classes} : FormTaskProps) => {
+    return ( <TaskList /> );
 }
  
-export {FormTask};
+export default FormTask;
