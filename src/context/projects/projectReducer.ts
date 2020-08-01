@@ -5,7 +5,8 @@ import {
     GET_PROJECTS,
     ADD_NEW_PROJECT, 
     CURRENT_PROJECT,
-    ADD_NEW_TASK
+    ADD_NEW_TASK,
+    DELETE_PROJECT,
 } from "./actionTypes";
 
 
@@ -40,6 +41,11 @@ export default (state : ProjectInterface, action : CommonActionType ) => {
             return {
                 ...state,
                 selectedProject: state.projects.filter(project => project.id === action.payload)[0]
+            }
+        case DELETE_PROJECT:
+            return {
+                ...state,
+                projects: state.projects.filter(project => project.id !== action.payload)
             }
         default:
             return state;

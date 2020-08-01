@@ -21,7 +21,8 @@ export interface ProjectInterface {
     getProjects(): void,
     addNewProject(project:Project): void,
     addNewTaskToProject(task: Task): void,
-    setCurrentProject(project:Project): void,
+    setCurrentProject(project:Project | undefined): void,
+    deleteProject(projectId: string):void,
 }
 
 export const initialState : ProjectInterface = {
@@ -47,5 +48,6 @@ export const initialState : ProjectInterface = {
     getProjects: () => null,
     addNewProject: () => null,
     addNewTaskToProject: () => null,
-    setCurrentProject: () => null
+    setCurrentProject: () => null,
+    deleteProject: () => null,
 }

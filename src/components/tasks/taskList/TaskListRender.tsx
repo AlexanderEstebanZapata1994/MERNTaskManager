@@ -8,7 +8,7 @@ import AddIcon from '@material-ui/icons/Add';
 import DeleteIcon from '@material-ui/icons/Delete';
 import projectContext from 'src/context/projects/projectContext';
  
-const TaskListRender = ({ project }: TaskListRenderProps) => {
+const TaskListRender = ({ project, deleteProject, setCurrentProject }: TaskListRenderProps) => {
     const classes = useStyles();
 
     const context = React.useContext(projectContext);
@@ -26,7 +26,8 @@ const TaskListRender = ({ project }: TaskListRenderProps) => {
     };
 
     const deleteAction = () => {
-        alert('deleting')
+        deleteProject(project.id);
+        setCurrentProject(undefined);
     }
 
     const addAction = () => {
@@ -49,7 +50,7 @@ const TaskListRender = ({ project }: TaskListRenderProps) => {
     return ( 
         <>
             <Typography variant="h4" align="center">{name}</Typography>
-            {tasks ?
+            {tasks.length !== 0 ?
                 <>
                     <List>
                         {tasks.map((task : TaskType) => <Task Task={task}/>) }
@@ -91,6 +92,8 @@ const useStyles = makeStyles((theme : Theme) =>
 
 interface TaskListRenderProps {
     project: Project,
+    deleteProject: (projectId: string) => void,
+    setCurrentProject: (project: Project | undefined) => void
 }
 
 export default TaskListRender;

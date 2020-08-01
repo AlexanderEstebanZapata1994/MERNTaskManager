@@ -7,12 +7,17 @@ import { Typography } from '@material-ui/core';
 const TaskList  = () => {
 
     const context = React.useContext(projectContext);
-    const {selectedProject} = context;
+    const {selectedProject, setCurrentProject, deleteProject} = context;
     return ( 
         <>
             { 
                 selectedProject 
-                ? <TaskListRender project={selectedProject} /> 
+                ? 
+                <TaskListRender 
+                    project={selectedProject} 
+                    deleteProject={deleteProject} 
+                    setCurrentProject={setCurrentProject}
+                />    
                 : <Typography variant="h6" align="center" noWrap>You have not selected any project</Typography>
             }
         </>

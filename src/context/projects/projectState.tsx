@@ -8,7 +8,8 @@ import {
     GET_PROJECTS,
     ADD_NEW_PROJECT, 
     CURRENT_PROJECT, 
-    ADD_NEW_TASK
+    ADD_NEW_TASK,
+    DELETE_PROJECT
 } from "./actionTypes";
 
 
@@ -46,18 +47,25 @@ const ProjectState = (props: any) => {
             payload: project
         })
     }
-
-    const setCurrentProject = (project: Project) => {
-        dispatch({
-            type: CURRENT_PROJECT,
-            payload: project.id
-        })
-    }
-
+    
     const addNewTaskToProject = (task: Task) => {
         dispatch({
             type: ADD_NEW_TASK,
             payload: task
+        })
+    }
+
+    const setCurrentProject = (project: Project | undefined) => {
+        dispatch({
+            type: CURRENT_PROJECT,
+            payload: project?.id
+        })
+    }
+
+    const deleteProject = (projectId: string) => {
+        dispatch({
+            type: DELETE_PROJECT,
+            payload: projectId
         })
     }
 
@@ -72,6 +80,7 @@ const ProjectState = (props: any) => {
                 addNewProject,
                 addNewTaskToProject,
                 setCurrentProject,
+                deleteProject,
             }}
         >
             {props.children}       
